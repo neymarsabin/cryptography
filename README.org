@@ -1,0 +1,11 @@
+#+TITLE: Cesar's Cipher Bash implementation
+#+OPTIONS: num:nil toc:nil H:1
+
+
+* Technique 
+  - Translating the letters to all lower case
+  - Reading input from a file
+  - Finding ascii decimal value of all the letters
+  - adding the key value to the ascii value
+  - converting the new ascii decimal value to alphabet
+  - print the alphabet
