@@ -10,7 +10,8 @@ read ptext
 #transforming into lower text..........
 echo $ptext | tr '[:upper:]' '[:lower:]' >  ./file1.txt    
 
-echo "Enter the value of the key ( <26) or more than 26:::: doesnt matter!!!!"
+n=0
+echo "Enter the value of the key ( <26) "
  read n
 
 
@@ -27,6 +28,8 @@ do
 	    echo '.'
 	    ;;
 	*)
+
+		
 	    t=$(printf "%d" "'${char}" )
  	    s=`expr $t + $n` 
 	    
@@ -34,8 +37,8 @@ do
  	    crypt () {
  	    if [ $s -gt 122 ]
  		then
- 		   #p=26-$n
- 		    r=97+$n
+		    p=$s-122
+ 		    r=97+$p-1
  		    ((t=$r))
  		    printf "\\$(printf '%03o' "$t" )"
 
@@ -48,8 +51,12 @@ do
 	     	    }
 	    crypt
 	    ;;
+	    
+	    
     esac
-    
+
+
+        
     done < ./file1.txt
 
 
