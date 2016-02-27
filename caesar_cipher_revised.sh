@@ -37,8 +37,11 @@ function encrypt(){
 #this is how we decrypt
 function decrypt(){
     #TODO: write one to decrypt
-    echo 'no thing done on decrypt, yet...'
-    echo 'run encrypt twice to decrypt text'
+    new_value=$(( $1 + 26 - $shift_by ))
+    expr ${new_value#-} % $NUMBER_OF_ALPHABETS
+
+#    echo 'no thing done on decrypt, yet...'
+#    echo 'run encrypt twice to decrypt text'
 }
 
 echo "started cyphering..."
@@ -60,9 +63,10 @@ do
 	*)
 	    ascii_value=$(printf "%d" "'${char}" )     # a=97
             ascii_value0=$((ascii_value - ASCII_VALUE_OF_A)) #lets start a=0
-
+	    
             ## print "(encrypt/decrypt  ascii_value0) + 97"
-            print_tochar $(( $(encrypt $((ascii_value0))) + ASCII_VALUE_OF_A))
+	    
+	    print_tochar $(( $(decrypt $((ascii_value0))) + ASCII_VALUE_OF_A))
 	    ;;
     esac
     
