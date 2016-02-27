@@ -1,7 +1,11 @@
 #+TITLE: Cesar's Cipher Bash implementation
 #+OPTIONS: num:nil toc:nil H:1
+#+DESCRIPTION: Cipher character by shifting nth place
 
-
+* Intro
+  #+BEGIN_QUOTE
+  In cryptography, a Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet
+  #+END_QUOTE
 * Technique 
   - Translating the letters to all lower case
   - Reading input from a file
@@ -10,4 +14,34 @@
   - converting the new ascii decimal value to alphabet
   - print the alphabet
 
+* Formula:
+  If x = number represented by char(a=0,b=1...) & n = shift value,
+  then shifted cypher E_n(x) is given by:
+#+BEGIN_EXAMPLE
+    E_n(x) = (x + n) % 26
+#+END_EXAMPLE
 
+* Eg:
+  To encrypt  the text _THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG_ 
+#+BEGIN_EXAMPLE
+  ./caesar_cipher_revised.sh 
+Enter your plain text: THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
+Enter shift ciper count: 23
+started cyphering...
+qeb nrfzh yoltk clu grjmp lsbo qeb ixwv ald
+Done cyphering !!
+#+END_EXAMPLE
+
+  and to revert it back, we just re-encrypt it by 3, but ouput will be
+  all in lowercase ;)
+#+BEGIN_EXAMPLE
+./caesar_cipher_revised.sh
+Enter your plain text: qeb nrfzh yoltk clu grjmp lsbo qeb ixwv ald
+Enter shift ciper count: 3
+started cyphering...
+the quick brown fox jumps over the lazy dog
+Done cyphering !!
+#+END_EXAMPLE
+
+
+  
