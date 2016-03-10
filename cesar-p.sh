@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Description:
-#   this is  a bash script to implement or simulate the
-# Caesar_cipher : https://en.wikipedia.org/wiki/Caesar_cipher
-# technique of cryptography.
-#
-# Enhancements:
-#    - log cypher and input in file.txt
-#    - refactoring
-#    - decrypt
-
 # global vars
 NUMBER_OF_ALPHABETS=26
 ASCII_VALUE_OF_Z=$(printf "%d" "'z") # i.e 122
@@ -46,9 +36,9 @@ function decrypt(){
 
 echo "started cyphering..."
 
-# 
-#@neymarsabin READMORE about IFS
-while IFS= read -r -n1 char
+
+function while_loop() {
+    while IFS= read -r -n1 char
 do
     case $char in
 	'')
@@ -65,21 +55,32 @@ do
             ascii_value0=$((ascii_value - ASCII_VALUE_OF_A)) #lets start a=0
 	    
             ## print "(encrypt/decrypt  ascii_value0) + 97"
-	    print_tochar $(( $(encrypt $((ascii_value0))) + ASCII_VALUE_OF_A)) 
+	    print_tochar $(( $($1 $((ascii_value0))) + ASCII_VALUE_OF_A)) 
 	    ;;
     esac
     
 done < ./file1.txt
 
-echo -e "\nDone cyphering !!"
-
-echo -e "do you want to decipher the cipher text?"
+}
 
 
+read -p "1)Encrypt or 2)decrypt: " CHOOSE_NUMBER
 
+case $CHOOSE_NUMBER in
+    1)
+	echo -e "\n ------------------"
+	while_loop encrypt
+	echo -e "\n ------------------ \n Done encrypting "
+	;;
+    2)
+	echo -e "\n ------------------ "
+	while_loop decrypt
+	echo -e "\n ------------------ \n Done decrypting "
+	;;
+    *)
+	echo "please choose one number:  1 or 2 "
+	;;
+esac
 
-
-
-
-
-
+#remove cache files
+rm ./file1.txt
