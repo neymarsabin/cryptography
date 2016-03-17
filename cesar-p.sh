@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # global vars
 NUMBER_OF_ALPHABETS=26
 ASCII_VALUE_OF_Z=$(printf "%d" "'z") # i.e 122
@@ -53,7 +52,7 @@ do
 	*)
 	    ascii_value=$(printf "%d" "'${char}" )     # a=97
             ascii_value0=$((ascii_value - ASCII_VALUE_OF_A)) #lets start a=0
-	    
+	   
             ## print "(encrypt/decrypt  ascii_value0) + 97"
 	    print_tochar $(( $($1 $((ascii_value0))) + ASCII_VALUE_OF_A)) 
 	    ;;
