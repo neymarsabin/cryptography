@@ -159,7 +159,7 @@ do
                 c1=$c2
                 c2=$tmp
         fi
- 
+	
         pos1=`echo "($r1*5)+$c1" | bc`
         pos2=`echo "($r2*5)+$c2" | bc`
        
