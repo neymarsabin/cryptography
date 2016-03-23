@@ -6,7 +6,7 @@ ASCII_VALUE_OF_A=$(printf "%d" "'a") # i.e 97
 DEFAULT_SHIT=10
 
 #taking inputs; no errors are handled; assumed input is a-z chars
-read -p "Enter your plain text: " ptext 
+read -p "Enter your plain text or ciphered text: " ptext 
 
 #transforming into lower text..........
 echo $ptext | tr '[:upper:]' '[:lower:]' >  ./file1.txt    
@@ -29,11 +29,11 @@ function decrypt(){
     new_value=$(( $1 + 26 - $shift_by ))
     expr ${new_value#-} % $NUMBER_OF_ALPHABETS
 
-#    echo 'no thing done on decrypt, yet...'
-#    echo 'run encrypt twice to decrypt text'
+    #    echo 'no thing done on decrypt, yet...'
+    #    echo 'run encrypt twice to decrypt text'
 }
 
-echo "started cyphering..."
+#echo "started cyphering..."
 
 
 function while_loop() {
