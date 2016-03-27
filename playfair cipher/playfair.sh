@@ -2,9 +2,11 @@
  
 echo "Enter the keyword:"
 read keyWord
- 
+#declaring arrays for storing alphabets  
+
 declare -a keySquare
 declare -a plainText
+#all of the characters removing j and substituing j as i
 allCharacters="ABCDEFGHIKLMNOPQRSTUVWXYZ"
  
 #Function to find the location of char in key-square
@@ -43,7 +45,7 @@ addToKeySquare() {
         then
                 return;
         fi
- 
+	#adding elements to keysquare array
         keySquare=( ${keySquare[@]} $char )
 }
  
@@ -79,7 +81,8 @@ printKeySquare
  
 echo "Enter the plain string:"
 read plainTextString
- 
+
+# introducing empty spacing
 tmp=""
  
 for((i=1;i<=${#plainTextString};i++))
@@ -144,8 +147,8 @@ do
         #Rule 1
         if [ $r1 -eq $r2 ]
         then
-                c1=`echo "(($c1+1)%5)" | bc`
-                c2=`echo "(($c2+1)%5)" | bc`
+            c1=`echo "(($c1+1)%5)" | bc`
+            c2=`echo "(($c2+1)%5)" | bc`
  
         #Rule 2
         elif [ $c1 -eq $c2 ]

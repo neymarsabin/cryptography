@@ -14,19 +14,9 @@ function convert_to_ascii {
     
 }
 
-# function just_print {
-#     echo $1 | tail -c 7
-# }
-
 function convert_to_hex {
     echo "obase=16;ibase=2; $1" | bc 
 }
-
-
-# for_a=$(convert_to_ascii z)
-# echo $for_a
-# for_hex_a=$(convert_to_hex $for_a)
-# echo $for_hex_a
 
 function cut_and_swap {
     #for the first four bits
@@ -57,13 +47,13 @@ function main_program {
 		    *)
 			echo "----------------------"
 			echo "For ::::  $char"
-			# convert_to_ascii $char | tail -c 8
-			# echo "after adding 0 to the leftmost part"
+			convert_to_ascii $char | tail -c 8
+			echo "after adding 0 to the leftmost part"
 			
-			#  convert_to_ascii $char
-			#  echo  "after swapping the first and last four bits"
-			#  cut_and_swap $(convert_to_ascii $char)
-			#  echo  "changing the four bits to hexadecimal value"
+			convert_to_ascii $char
+			echo  "after swapping the first and last four bits"
+			cut_and_swap $(convert_to_ascii $char)
+			echo  "changing the four bits to hexadecimal value"
 			new_ascii=$(cut_and_swap $(convert_to_ascii $char))
 			
 			echo "----------------------"
@@ -111,7 +101,7 @@ function main_program {
 			convert_to_hex $new_ascii
 		 
 		 
-			;;
+	 		;;
 		    
 		esac
 		
@@ -126,6 +116,6 @@ function main_program {
 
 main_program yes
 main_program no
-#echo 
 
-    rm .assign.txt
+#remove the cache file
+rm .assign.txt
