@@ -6,7 +6,7 @@
 read -p "Enter the plain text:" ptext
 
 #converting plain text into all lowercase and saving it into a file
-echo $ptext | tr [':upper:'] [':lower:'] > .assign.txt
+echo $ptext | tr '[:upper:]' '[:lower:]' > .assign.txt
 
 #function to convert each character into 7 bit ascii code ::: its binary value of the character ::
 function convert_to_ascii {

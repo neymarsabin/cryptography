@@ -4,8 +4,8 @@ echo "Enter the keyword:"
 read keyWord
 #declaring arrays for storing alphabets  
 
-declare -a keySquare
-declare -a plainText
+#declare -a keySquare
+#declare -a plainText
 #all of the characters removing j and substituing j as i
 allCharacters="ABCDEFGHIKLMNOPQRSTUVWXYZ"
  
